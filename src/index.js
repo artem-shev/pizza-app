@@ -9,12 +9,12 @@ import 'angular-toastr';
 import 'bootstrap/dist/css/bootstrap.min.css!';
 import 'angular-toastr/dist/angular-toastr.css!';
 
-import commonModule from './app/common/common.module';
-import componentsModule from './app/components/components.module';
+import commonModule from 'src/app/common/common.module';
+import componentsModule from 'src/app/components/components.module';
 
-import routesConfig from './routes';
-import { config } from './config';
-import { App } from './app/app.component/app.component';
+import { routesConfig } from 'src/routes';
+import { config } from 'src/config';
+import { App } from 'src/app/app.component/app.component';
 
 angular
   .module('app', [
