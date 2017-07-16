@@ -1,8 +1,4 @@
-class AppController {
-  constructor() {}
-
-  $onInit() {}
-}
+class AppController {}
 
 export const App = {
   templateUrl: 'app/app.component/app.html',

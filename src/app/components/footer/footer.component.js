@@ -1,5 +1,7 @@
 class FooterController {
-  constructor() {}
+  $onInit() {
+    this.message = 'Developed by Artem Shevliakov in 2017.';
+  }
 }
 
 export const FooterComponent = {
