@@ -7,6 +7,8 @@ module.exports = {
     'linebreak-style': 0,
      'object-curly-spacing': 0,
      'comma-dangle': 0,
+     'no-implicit-coercion': 0,
+     'arrow-parens': 0,
   },
 
 }

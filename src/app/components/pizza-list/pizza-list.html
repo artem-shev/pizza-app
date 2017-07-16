@@ -1,1 +1,37 @@
-pizza list
+<div class="container-fluid">
+  <h3>pizza list</h3>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <input type="text" class="form-control" placeholder="Recipes name" ng-model="$ctrl.nameQuery">
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th ng-repeat="title in $ctrl.tableTitles" ng-class="title.classes">
+            <span class="glyphicon glyphicon-chevron-down no-outline"
+                  ng-class="$ctrl.sorter.prop === title.name.toLowerCase() && $ctrl.sorter.isReversed ? 'glyphicon-chevron-down' : 'glyphicon-chevron-up'"
+                  ng-if="title.isSorter"
+                  ng-click="$ctrl.setSorter(title.name)">
+            </span>
+            {{title.name}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="recipe in $ctrl.availableRecipes | filter: { name: $ctrl.nameQuery } | orderBy: $ctrl.sorter.prop : $ctrl.sorter.isReversed">
+          <td class="text-center">{{$index + 1}}</td>
+          <td class="text-capitalize text-center">{{recipe.name}}</td>
+          <td class="text-capitalize">{{recipe.ingredientsString}}</td>
+          <td class="text-center">{{recipe.price | currency:USD}}</td>
+          <td class="text-center">
+            <button class="btn btn-success" ng-click="$ctrl.addToCart(recipe)">
+              Add to cart
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

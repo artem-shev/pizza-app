@@ -1,11 +1,7 @@
 class AppController {
-  constructor() {
-    // this.ordersService = OrdersService;
-  }
+  constructor() {}
 
-  $onInit() {
-    console.log('this', this);
-  }
+  $onInit() {}
 }
 
 export const App = {
