@@ -1,8 +1,8 @@
-import { recipes } from './pizza.recipes.js';
+import { recipes } from './pizza.data.js';
 
 export class OrdersService {
   constructor() {
-    this.recipes = recipes;
+    this.availablePizza = recipes;
     console.log('recipes', recipes);
   }
 }

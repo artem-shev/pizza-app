@@ -7,23 +7,24 @@ import 'angular-ui-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css!';
 
-import { OrdersService } from './app/common/orders.service.js';
+import commonModule from './app/common/common.module';
+import componentsModule from './app/components/components.module';
 
-import {App} from './app/components/app/app.js';
-import {Header} from './app/components/header/header.js';
-import {Footer} from './app/components/footer/footer.js';
-import routesConfig from './routes.js';
+import routesConfig from './routes';
+import { App } from './app/app.component/app.component';
 
 angular
   .module('app', [
+    // ngModules
     'ngAnimate',
     'ngAria',
     'ngMessages',
+    // third-party modules
     'ui.router',
     'ui.bootstrap',
+    // app modules
+    commonModule,
+    componentsModule,
   ])
   .config(routesConfig)
-  .component('app', App)
-  .service('OrdersService', OrdersService)
-  .component('headerComponent', Header)
-  .component('footerComponent', Footer);
+  .component('app', App);

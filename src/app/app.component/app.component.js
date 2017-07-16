@@ -1,6 +1,6 @@
 class AppController {
-  constructor(OrdersService) {
-    this.ordersService = OrdersService;
+  constructor() {
+    // this.ordersService = OrdersService;
   }
 
   $onInit() {
@@ -9,6 +9,6 @@ class AppController {
 }
 
 export const App = {
-  templateUrl: 'src/app/components/app/app.html',
+  templateUrl: 'app/app.component/app.html',
   controller: AppController
 };

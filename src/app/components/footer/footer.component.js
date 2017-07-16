@@ -2,8 +2,8 @@ class FooterController {
   constructor() {}
 }
 
-export const Footer = {
-  templateUrl: 'src/app/components/footer/footer.html',
+export const FooterComponent = {
+  templateUrl: 'app/components/footer/footer.html',
   controller: FooterController,
   bindings: {}
 };
