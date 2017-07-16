@@ -31,7 +31,6 @@ class CartListController {
   removeFromCart(index) {
     this.ordersService.removeFromCart(index)
       .then(() => {
-        this.currentCart.splice(index, 1);
         this.getTotalPrice(this.currentCart);
         this.logger.success('Item was removed from cart!');
       });

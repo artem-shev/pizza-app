@@ -12,7 +12,7 @@ function partials() {
     .pipe(htmlmin(conf.htmlmin))
     .pipe(angularTemplatecache('templateCacheHtml.js', {
       module: conf.ngModule,
-      root: `${conf.paths.src}/app`
+      root: `app`
     }))
     .pipe(insert.prepend(`import angular from 'angular';`))
     .pipe(gulp.dest(conf.path.tmp()));

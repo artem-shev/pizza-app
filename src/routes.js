@@ -1,5 +1,6 @@
 export function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-  /** @ngInject */
+  'ngInject';
+
   $locationProvider.html5Mode(true).hashPrefix('!');
   $urlRouterProvider.otherwise('/pizza-list');
 

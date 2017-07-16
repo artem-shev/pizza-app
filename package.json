@@ -120,5 +120,8 @@
         "format": "amd"
       }
     }
+  },
+  "dependencies": {
+    "gulp-replace": "^0.5.4"
   }
 }
