@@ -1,8 +1,10 @@
 class PizzaListController {
-  constructor(OrdersService) {
+  constructor(OrdersService, SupportService, logger) {
     'ngInject';
 
+    this.supportService = SupportService;
     this.ordersService = OrdersService;
+    this.logger = logger;
   }
 
   $onInit() {
@@ -31,30 +33,20 @@ class PizzaListController {
   }
 
   setSorter(propName) {
-    const prop = propName.toLowerCase();
-    if (this.sorter.prop === prop) {
-      this.sorter.isReversed = !this.sorter.isReversed;
-    } else {
-      this.sorter.prop = prop;
-      this.sorter.isReversed = false;
-    }
+    this.sorter = this.supportService.setSorter(this.sorter, propName);
   }
 
   addToCart(recipe) {
     this.ordersService.addToCart(recipe)
       .then((response) => {
         if (response.data) {
-          console.log('recipe was added to cart');
+          this.logger.success('Item was added to cart!');
         }
       });
   }
 
   getSortDirection(title) {
-    let direction = 'glyphicon-chevron-down';
-    if (this.sorter.prop === title.name.toLowerCase() && !this.sorter.isReversed) {
-      direction = 'glyphicon-chevron-up';
-    }
-    return direction;
+    return this.supportService.getSortDirection(this.sorter, title);
   }
 }
 

@@ -300,6 +300,7 @@ SystemJS.config({
     'github:*/*.json'
   ],
   map: {
+    'angular-toastr': 'github:Foxandxss/angular-toastr@2.1.1',
     'bootstrap': 'github:twbs/bootstrap@3.3.7',
     'angular-ui-bootstrap': 'npm:angular-ui-bootstrap@2.5.0',
     'angular': 'npm:angular@1.6.5',

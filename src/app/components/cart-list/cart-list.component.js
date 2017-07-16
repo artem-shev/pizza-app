@@ -1,8 +1,9 @@
 class CartListController {
-  constructor(OrdersService) {
+  constructor(OrdersService, logger) {
     'ngInject';
 
     this.ordersService = OrdersService;
+    this.logger = logger;
   }
 
   $onInit() {
@@ -12,7 +13,7 @@ class CartListController {
     this.tableTitles = [
       { name: 'Number', classes: 'text-center w-100' },
       { name: 'Name', classes: 'text-center' },
-      { name: 'Price', classes: 'text-center', isSorter: true },
+      { name: 'Price', classes: 'text-center' },
       { name: 'Remove from cart', classes: 'text-center w-150' },
     ];
 
@@ -32,7 +33,7 @@ class CartListController {
       .then(() => {
         this.currentCart.splice(index, 1);
         this.getTotalPrice(this.currentCart);
-        console.log('item was removed');
+        this.logger.success('Item was removed from cart!');
       });
   }
 
@@ -42,7 +43,7 @@ class CartListController {
         if (response.data) {
           this.currentCart = [];
           this.getTotalPrice(this.currentCart);
-          console.log('order are placed');
+          this.logger.success('Cart was ordered!');
         }
       });
   }

@@ -1,1 +1,30 @@
-history
+<div class="container-fluid">
+  <h3>{{$ctrl.title}}</h3>
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered" ng-if="$ctrl.history.length">
+      <thead>
+        <tr>
+          <th ng-repeat="title in $ctrl.tableTitles" ng-class="title.classes">
+            <span class="glyphicon no-outline"
+                  ng-class="$ctrl.getSortDirection(title)"
+                  ng-if="title.isSorter"
+                  ng-click="$ctrl.setSorter(title.name)">
+            </span>
+            {{title.name}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="order in $ctrl.history | orderBy: $ctrl.sorter.prop : $ctrl.sorter.isReversed track by $index">
+          <td class="text-center align-middle">{{$index + 1}}</td>
+          <td class="text-capitalize text-center align-middle">{{order.items}}</td>
+          <td class="text-center align-middle">{{order.price | currency: USD}}</td>
+          <td class="text-center align-middle">{{order.date | date:"MMM dd, yyyy HH:mm"}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div ng-if="!$ctrl.history.length" class="text-warning">
+    <strong>{{$ctrl.errorMsg}}</strong>
+  </div>
+</div>
