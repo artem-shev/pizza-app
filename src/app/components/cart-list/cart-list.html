@@ -1,1 +1,37 @@
-cart list
+<div class="container-fluid">
+  <h3>{{$ctrl.title}}</h3>
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered" ng-if="$ctrl.currentCart.length">
+      <thead>
+        <tr>
+          <th ng-repeat="title in $ctrl.tableTitles" ng-class="title.classes">
+            {{title.name}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="recipe in $ctrl.currentCart track by $index">
+          <td class="text-center align-middle">{{$index + 1}}</td>
+          <td class="text-capitalize text-center align-middle">{{recipe.name}}</td>
+          <td class="text-center align-middle">{{recipe.price | currency: USD}}</td>
+          <td class="text-center align-middle">
+            <button class="btn btn-warning" ng-click="$ctrl.removeFromCart($index)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div ng-if="$ctrl.currentCart.length">
+    <p class="text-right">
+      <strong>Total price: {{$ctrl.totalPrice | currency: USD}}</strong>
+    </p>
+    <div class="text-right">
+      <button class="btn btn-success no-outline" ng-click="$ctrl.makeOrder()">Order now!</button>
+    </div>
+  </div>
+  <div ng-if="!$ctrl.currentCart.length" class="text-warning">
+    <strong>{{$ctrl.errorMsg}}</strong>
+  </div>
+</div>

@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 class PizzaListController {
   constructor(OrdersService) {
     'ngInject';
@@ -8,13 +6,14 @@ class PizzaListController {
   }
 
   $onInit() {
+    this.title = 'List of available Pizza';
     this.nameQuery = '';
     this.sorter = {
       prop: 'price',
       isReversed: true,
     };
     this.tableTitles = [
-      { name: 'Number', classes: 'text-center' },
+      { name: 'Number', classes: 'text-center w-100' },
       { name: 'Name', classes: 'text-center' },
       { name: 'Ingredients', classes: 'text-center' },
       { name: 'Price', classes: 'text-center', isSorter: true },
@@ -48,6 +47,14 @@ class PizzaListController {
           console.log('recipe was added to cart');
         }
       });
+  }
+
+  getSortDirection(title) {
+    let direction = 'glyphicon-chevron-down';
+    if (this.sorter.prop === title.name.toLowerCase() && !this.sorter.isReversed) {
+      direction = 'glyphicon-chevron-up';
+    }
+    return direction;
   }
 }
 
