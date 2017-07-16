@@ -22,8 +22,11 @@ export class OrdersService {
   }
 
   addToCart(recipe) {
-    this.cart.push(recipe);
-    return this.q.resolve({ data: true });
+    return this.q.resolve({ data: true })
+      .then((response) => {
+        this.cart.push(recipe);
+        return response;
+      });
   }
 
   getCurrentCart() {
@@ -31,16 +34,22 @@ export class OrdersService {
   }
 
   removeFromCart(index) {
-    this.cart.splice(index, 1);
-    return this.q.resolve({ data: true });
+    return this.q.resolve({ data: true })
+      .then((response) => {
+        this.cart.splice(index, 1);
+        return response;
+      });
   }
 
   makeOrder(cart, price) {
     const date = new Date();
     const order = { cart, price, date };
-    this.history.push(order);
-    this.cart = [];
-    return this.q.resolve({ data: true });
+    return this.q.resolve({ data: true })
+      .then((response) => {
+        this.history.push(order);
+        this.cart = [];
+        return response;
+      });
   }
 
   getHistory() {
